@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/COMP-2210.iml" filepath="$PROJECT_DIR$/COMP-2210.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M0/M0.iml" filepath="$PROJECT_DIR$/M0/M0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M1/M1.iml" filepath="$PROJECT_DIR$/M1/M1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M2/M2.iml" filepath="$PROJECT_DIR$/M2/M2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M3/M3.iml" filepath="$PROJECT_DIR$/M3/M3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M4/M4.iml" filepath="$PROJECT_DIR$/M4/M4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M5/M5.iml" filepath="$PROJECT_DIR$/M5/M5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M6/M6.iml" filepath="$PROJECT_DIR$/M6/M6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/M7/M7.iml" filepath="$PROJECT_DIR$/M7/M7.iml" />
+    </modules>
+  </component>
+</project>
