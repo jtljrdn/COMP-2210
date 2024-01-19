@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class SelectorTest {
@@ -53,5 +55,23 @@ public class SelectorTest {
         assertEquals(9, Selector.kmax(b, 1));
         int[] c = {5, 7};
         assertEquals(7, Selector.kmax(c, 1));
+    }
+
+    @Test
+    public void range() {
+        // Write tests for the range method
+        int[] a = {1,2,3,4,5,6,7,8,9,10};
+        int[] resultA = {2,3,4,5,6};
+        assertArrayEquals(resultA, Selector.range(a,2,6));
+        System.out.println("Test 1 passed");
+        int[] b = {3,6,2,7,1,3,8};
+        int[] resultB = {2,3,3,6};
+        assertArrayEquals(resultB, Selector.range(b,2,6));
+        System.out.println("Test 2 passed");
+        int[] c = {1,2,3,4,5,6,7,8,9,10};
+        int[] resultC = {2,3,4,5,6};
+        assertArrayEquals(resultC, Selector.range(c,2,6));
+        System.out.println("Test 3 passed");
+
     }
 }

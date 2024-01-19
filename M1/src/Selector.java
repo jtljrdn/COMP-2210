@@ -161,7 +161,29 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int[] range(int[] a, int low, int high) {
-        return null;
+        if (a == null || a.length == 0){
+            throw new IllegalArgumentException();
+        }
+        int[] temp = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            temp[i] = a[i];
+        }
+        Arrays.sort(temp);
+        int count = 0;
+
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] >= low && temp[i] <= high){
+                count++;
+            }
+        }
+        int[] range = new int[count];
+        count = 0;
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] >= low && temp[i] <= high){
+                range[count++] = temp[i];
+            }
+        }
+        return range;
     }
 
 
