@@ -168,7 +168,6 @@ public final class Selector {
         for (int i = 0; i < a.length; i++) {
             temp[i] = a[i];
         }
-        Arrays.sort(temp);
         int count = 0;
 
         for (int i = 0; i < temp.length; i++) {
@@ -195,7 +194,26 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int ceiling(int[] a, int key) {
-        return -99;
+        if (a == null || a.length == 0){
+            throw new IllegalArgumentException();
+        }
+        int max = max(a);
+        if (max < key){
+            throw new IllegalArgumentException();
+        } else if (max == key){
+            return max;
+        }
+        int[] temp = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            temp[i] = a[i];
+        }
+        int ceiling = max;
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] >= key && temp[i] < ceiling){
+                ceiling = temp[i];
+            }
+        }
+        return ceiling;
     }
 
 
@@ -207,7 +225,26 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int floor(int[] a, int key) {
-        return -99;
+        if (a == null || a.length == 0){
+            throw new IllegalArgumentException();
+        }
+        int min = min(a);
+        if (min > key){
+            throw new IllegalArgumentException();
+        } else if (min == key){
+            return min;
+        }
+        int[] temp = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            temp[i] = a[i];
+        }
+        int floor = min;
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] <= key && temp[i] > floor){
+                floor = temp[i];
+            }
+        }
+        return floor;
     }
 
 }

@@ -65,7 +65,7 @@ public class SelectorTest {
         assertArrayEquals(resultA, Selector.range(a,2,6));
         System.out.println("Test 1 passed");
         int[] b = {3,6,2,7,1,3,8};
-        int[] resultB = {2,3,3,6};
+        int[] resultB = {3,6,2,3};
         assertArrayEquals(resultB, Selector.range(b,2,6));
         System.out.println("Test 2 passed");
         int[] c = {1,2,3,4,5,6,7,8,9,10};
@@ -73,5 +73,18 @@ public class SelectorTest {
         assertArrayEquals(resultC, Selector.range(c,2,6));
         System.out.println("Test 3 passed");
 
+    }
+
+    @Test
+    public void ceiling() {
+        int[] a = {1,2,3,4,5,6,7,9,10};
+        assertEquals(9, Selector.ceiling(a, 8));
+        int[] b = {};
+        try {
+            Selector.ceiling(b, 3);
+            fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e){
+            assertTrue(true);
+        }
     }
 }
