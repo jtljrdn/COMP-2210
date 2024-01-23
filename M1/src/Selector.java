@@ -4,20 +4,19 @@ import java.util.Arrays;
  * Defines a library of selection methods
  * on arrays of ints.
  *
- * @author   Jordan Lee (jtl0071@auburn.edu)
- * @author   Dean Hendrix (dh@auburn.edu)
- * @version  1.18.2023
- *
+ * @author Jordan Lee (jtl0071@auburn.edu)
+ * @author Dean Hendrix (dh@auburn.edu)
+ * @version 1.18.2023
  */
 public final class Selector {
 
     /**
      * Can't instantiate this class.
-     *
+     * <p>
      * D O   N O T   C H A N G E   T H I S   C O N S T R U C T O R
-     *
      */
-    private Selector() { }
+    private Selector() {
+    }
 
 
     /**
@@ -26,12 +25,12 @@ public final class Selector {
      * length. The array a is not changed by this method.
      */
     public static int min(int[] a) {
-        if (a == null || a.length == 0){
+        if (a == null || a.length == 0) {
             throw new IllegalArgumentException();
         }
         int min = a[0];
         for (int i = 0; i < a.length; i++) {
-            if (a[i] <= min){
+            if (a[i] <= min) {
                 min = a[i];
             }
         }
@@ -45,12 +44,12 @@ public final class Selector {
      * length. The array a is not changed by this method.
      */
     public static int max(int[] a) {
-        if (a == null || a.length == 0){
+        if (a == null || a.length == 0) {
             throw new IllegalArgumentException();
         }
         int max = a[0];
         for (int i = 0; i < a.length; i++) {
-            if (a[i] >= max){
+            if (a[i] >= max) {
                 max = a[i];
             }
         }
@@ -69,10 +68,10 @@ public final class Selector {
     public static int kmin(int[] a, int k) {
 
         // Errors
-        if (a == null || a.length == 0 || k < 1 || k > a.length){
+        if (a == null || a.length == 0 || k < 1 || k > a.length) {
             throw new IllegalArgumentException();
         }
-        if (k == 1){
+        if (k == 1) {
             return min(a);
         }
 
@@ -82,20 +81,20 @@ public final class Selector {
         }
         Arrays.sort(temp);
         // if there is no kth minimum value
-        if (temp[0] == temp[temp.length-1]){
+        if (temp[0] == temp[temp.length - 1]) {
             throw new IllegalArgumentException();
         }
-        if (k == a.length){
+        if (k == a.length) {
             return max(a);
         }
         // Find kth min
         int count = 1;
         int kth = temp[0];
         for (int i = 1; i < temp.length; i++) {
-            if (temp[i] != temp[i-1]){
+            if (temp[i] != temp[i - 1]) {
                 count++;
             }
-            if (count == k){
+            if (count == k) {
                 kth = temp[i];
             }
         }
@@ -114,10 +113,10 @@ public final class Selector {
     public static int kmax(int[] a, int k) {
 
         // Errors
-        if (a == null || a.length == 0 || k < 1 || k > a.length){
+        if (a == null || a.length == 0 || k < 1 || k > a.length) {
             throw new IllegalArgumentException();
         }
-        if (k == 1){
+        if (k == 1) {
             return max(a);
         }
         // Copy array
@@ -127,20 +126,20 @@ public final class Selector {
         }
         Arrays.sort(temp);
         // if there is no kth minimum value
-        if (temp[0] == temp[temp.length-1]){
+        if (temp[0] == temp[temp.length - 1]) {
             throw new IllegalArgumentException();
         }
-        if (k == a.length){
+        if (k == a.length) {
             return min(a);
         }
         // Find kth max
         int count = 1;
         int kth = temp[0];
         for (int i = temp.length - 2; i >= 0; i--) {
-            if (temp[i] != temp[i+1]){
+            if (temp[i] != temp[i + 1]) {
                 count++;
             }
-            if (count == k){
+            if (count == k) {
                 kth = temp[i];
             }
         }
@@ -161,7 +160,7 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int[] range(int[] a, int low, int high) {
-        if (a == null || a.length == 0){
+        if (a == null || a.length == 0) {
             throw new IllegalArgumentException();
         }
         int[] temp = new int[a.length];
@@ -171,14 +170,14 @@ public final class Selector {
         int count = 0;
 
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] >= low && temp[i] <= high){
+            if (temp[i] >= low && temp[i] <= high) {
                 count++;
             }
         }
         int[] range = new int[count];
         count = 0;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] >= low && temp[i] <= high){
+            if (temp[i] >= low && temp[i] <= high) {
                 range[count++] = temp[i];
             }
         }
@@ -194,13 +193,13 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int ceiling(int[] a, int key) {
-        if (a == null || a.length == 0){
+        if (a == null || a.length == 0) {
             throw new IllegalArgumentException();
         }
         int max = max(a);
-        if (max < key){
+        if (max < key) {
             throw new IllegalArgumentException();
-        } else if (max == key){
+        } else if (max == key) {
             return max;
         }
         int[] temp = new int[a.length];
@@ -209,7 +208,7 @@ public final class Selector {
         }
         int ceiling = max;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] >= key && temp[i] < ceiling){
+            if (temp[i] >= key && temp[i] < ceiling) {
                 ceiling = temp[i];
             }
         }
@@ -225,13 +224,13 @@ public final class Selector {
      * The array a is not changed by this method.
      */
     public static int floor(int[] a, int key) {
-        if (a == null || a.length == 0){
+        if (a == null || a.length == 0) {
             throw new IllegalArgumentException();
         }
         int min = min(a);
-        if (min > key){
+        if (min > key) {
             throw new IllegalArgumentException();
-        } else if (min == key){
+        } else if (min == key) {
             return min;
         }
         int[] temp = new int[a.length];
@@ -240,7 +239,7 @@ public final class Selector {
         }
         int floor = min;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i] <= key && temp[i] > floor){
+            if (temp[i] <= key && temp[i] > floor) {
                 floor = temp[i];
             }
         }
