@@ -4,7 +4,6 @@ public class BinarySearch {
         int right = a.length - 1;
         while (left <= right) {
             int middle = left + (right - left) / 2;
-            System.out.println(middle);
             if (a[middle] == target){
                 return middle;
             }
@@ -18,9 +17,18 @@ public class BinarySearch {
         return -1;
     }
 
+    public static int foo(int n, int f){
+        System.out.println(n);
+        System.out.println(f);
+        if (n == 1){
+            return f;
+        }
+        return foo(n-1, n+f);
+    }
+
+
+
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 9, 10};
-        int actual = binarySearch(a, 2);
-        System.out.println("Expected: 3 Actual: " + actual);
+        System.out.println(foo(5,1));
     }
 }
