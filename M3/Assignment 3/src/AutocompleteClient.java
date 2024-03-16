@@ -23,12 +23,14 @@ public class AutocompleteClient {
                 terms[i] = new Term(query, weight);
             }
             System.out.println("Parsing Completed...");
+            scanner.close();
         } catch (Exception e) {
             System.out.println("*****ERROR**** " + e.toString());
         }
         System.out.println("Looking for autocomplete");
         Autocomplete auto = new Autocomplete(terms);
-        Term[] matches = auto.allMatches("comp");
+        Scanner scnr = new Scanner(System.in);
+        Term[] matches = auto.allMatches(scnr.next());
         for (Term term : matches) {
             System.out.println(term);
         }
