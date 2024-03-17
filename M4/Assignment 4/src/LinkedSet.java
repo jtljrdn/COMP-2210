@@ -164,32 +164,30 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         if (element == null || !contains(element)){
             return false;
         }
-        Node n = rear;
-        if (n.element.equals(element)){
-            n.prev.next = null;
-            n.prev = null;
-            size--;
-            return true;
+        Node n = locate(element);
+        if (n == null) {
+            return false;
         }
-        n = front;
-        if (n.element.equals(element)){
-            n.next.prev = null;
-            n.next = null;
-            size--;
-            return true;
-        }
-        while (n != null){
-            if (n.element.equals(element)){
-                n.prev.next = n.next;
-                n.next.prev = n.prev;
-                n.prev = null;
-                n.next = null;
-                size--;
-                return true;
+        if (n == front) {
+            front = front.next;
+            if (front == null) {
+                rear = null;
+            } else {
+                front.prev = null;
             }
-            n = n.next;
+            size--;
+            return true;
         }
-        return false;
+        if (n == rear) {
+            rear = rear.prev;
+            rear.next = null;
+            size--;
+            return true;
+        }
+        n.prev.next = n.next;
+        n.next.prev = n.prev;
+        size--;
+        return true;
     }
 
 
@@ -220,7 +218,15 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * the parameter set, false otherwise
      */
     public boolean equals(Set<T> s) {
-        return false;
+        if (s == null){
+            return false;
+        }
+        for (T element : s){
+            if (!contains(element)){
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -233,7 +239,22 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * the parameter set, false otherwise
      */
     public boolean equals(LinkedSet<T> s) {
-        return false;
+        if (s == null){
+            return false;
+        }
+        if (size != s.size){
+            return false;
+        }
+        Node n = front;
+        Node p = s.front;
+        while (n != null && p != null){
+            if (!n.element.equals(p.element)){
+                return false;
+            }
+            n = n.next;
+            p = p.next;
+        }
+        return true;
     }
 
 
@@ -338,6 +359,8 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
     //////////////////////////////
 
     // Feel free to add as many private methods as you need.
+
+
 
     private Node locate(T element) {
         Node f = front;
