@@ -1,10 +1,17 @@
 public class LinkedSetClient {
     public static void main(String[] args) {
-        Set<Integer> set = new LinkedSet<Integer>();
-        Set<Integer> set2 = new LinkedSet<Integer>();
+        LinkedSet<Integer> set = new LinkedSet<Integer>();
+        LinkedSet<Integer> set2 = new LinkedSet<Integer>();
         set.add(1);
-        set2.add(1);
+        set.add(2);
+        set.add(3);
 
-        System.out.println(set.equals(set2));
+        set2.add(3);
+        set2.add(2);
+
+
+
+        Set<Integer> output = set.complement(set2);
+        System.out.println(output);
     }
 }
