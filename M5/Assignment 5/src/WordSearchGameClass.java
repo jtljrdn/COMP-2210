@@ -258,8 +258,7 @@ public class WordSearchGameClass implements WordSearchGame{
     }
 
     // Recursive function to find all words
-    private LinkedList<Integer> searchAllWords(LinkedList<Integer> wordProg,
-                                               int min) {
+    private LinkedList<Integer> searchAllWords(LinkedList<Integer> wordProg, int min) {
         Position[] adjArray = new Position(wordProg.getLast()).adjacent(wordProg);
         for (Position p : adjArray) {
             if (p == null) {
